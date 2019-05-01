@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Allows use of Spring annotation -->
+    <context:component-scan base-package="journal" />
+    <context:annotation-config/>
+
+    <mvc:annotation-driven />
+
+    <!-- JAX-RS basic resource -->
+    <!--<bean id="HelloSpringResource" class="fias.HelloSpringResource" />-->
+
+    <!-- An example bean -->
+    <!--<bean id="greetingBean" class="org.jboss.as.quickstarts.resteasyspring.GreetingBean">-->
+        <!--<constructor-arg index="0" type="java.lang.String"  value="Welcome to RESTEasy + Spring," />-->
+    <!--</bean>-->
+
+    <!-- JAX-RS locating resource -->
+    <!--<bean id="locating" class="fias.LocatingResource"/>-->
+
+</beans>
