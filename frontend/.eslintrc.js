@@ -1,24 +1,25 @@
 module.exports = {
-  root: true,
   env: {
-    browser: true,
-    node: true
+    es6: true,
+    node: true,
+    browser: true
   },
+  parser: 'vue-eslint-parser',
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: '@typescript-eslint/parser'
   },
+  plugins: ['@typescript-eslint', 'prettier'],
   extends: [
-    '@nuxtjs',
-    'plugin:nuxt/recommended',
-    'plugin:prettier/recommended',
+    'plugin:vue/recommended',
+    'plugin:@typescript-eslint/recommended',
     'prettier',
-    'prettier/vue'
+    'prettier/vue',
+    'prettier/@typescript-eslint'
   ],
-  plugins: [
-    'prettier'
-  ],
-  // add your custom rules here
   rules: {
-    'nuxt/no-cjs-in-config': 'off'
+    'prettier/prettier': ['error'],
+    '@typescript-eslint/explicit-function-return-type': ['off'],
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-var-requires': 'off'
   }
 }
