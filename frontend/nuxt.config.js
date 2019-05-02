@@ -32,12 +32,12 @@ module.exports = {
   /*
    ** Global CSS
    */
-  css: ['~/assets/style/app.styl'],
+  css: ['@/assets/style/app.styl'],
 
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['@/plugins/vuetify'],
+  plugins: ['@/plugins/vuetify', '@/plugins/i18n'],
   /*
    ** Nuxt.js modules
    */
@@ -129,7 +129,7 @@ module.exports = {
     }
   },
   router: {
-    middleware: ['auth']
+    middleware: ['auth', 'i18n']
   },
   /*
    ** Axios module configuration
@@ -137,7 +137,6 @@ module.exports = {
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
   },
-
   /*
    ** Build configuration
    */
@@ -159,7 +158,10 @@ module.exports = {
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
-          exclude: /(node_modules)/
+          exclude: /(node_modules)/,
+          options: {
+            fix: true
+          }
         })
       }
     }

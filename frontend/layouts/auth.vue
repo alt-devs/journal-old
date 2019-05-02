@@ -6,7 +6,7 @@
           v-flex(xs12 sm8 md4)
             v-card.elevation-12
               v-toolbar(dark color="primary")
-                v-toolbar-title Вход
+                v-toolbar-title {{ $t("auth.signin.caption") }}
                 v-spacer
               v-card-text
                 nuxt
