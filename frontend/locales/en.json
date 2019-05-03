@@ -1,0 +1,26 @@
+{
+  "auth": {
+    "signin": {
+      "caption": "Sign in",
+      "title": "Login",
+      "go": "login"
+    },
+    "signup": {
+      "caption": "Sign up",
+      "title": "Registration",
+      "go": "sign up"
+    },
+    "fields": {
+      "login": "login or email",
+      "password": "password",
+      "passwordConfirmation": "password confirmation",
+      "email": "email",
+      "phone": "phone",
+      "name": "name",
+      "surname": "surname",
+      "patronymic": "patronymic"
+    },
+    "newUser": "A new user",
+    "alreadyHasAccount": "Do you already have an account?"
+  }
+}
