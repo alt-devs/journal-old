@@ -1,10 +1,10 @@
-/**
- * Created by Evgeniy Ukhanov on 02.05.2019.
- */
-
-package journal.services.graphql;
+package journal.controllers.graphql;
 
 import graphql.schema.DataFetchingEnvironment;
+
+/**
+ * @author Evgeniy Ukhanov
+ */
 
 
 public interface DataFetcher<T> {

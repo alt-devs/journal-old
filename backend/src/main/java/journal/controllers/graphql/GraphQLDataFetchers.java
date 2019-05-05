@@ -1,9 +1,4 @@
-/**
- * Created by Evgeny Ukhanov on 02.05.2019.
- * Тестовый набор данных. Затем переделать на загрузку данных из БД
- */
-
-package journal.services.graphql;
+package journal.controllers.graphql;
 
 import com.google.common.collect.ImmutableMap;
 import org.springframework.stereotype.Component;
@@ -12,6 +7,11 @@ import graphql.schema.DataFetcher;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
+/**
+ * @author Evgeniy Ukhanov
+ * Тестовый набор данных. Затем переделать на загрузку данных из БД
+ */
 
 
 @Component

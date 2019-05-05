@@ -1,8 +1,4 @@
-/**
- * Created by Evgeniy Ukhanov on 02.05.2019.
- */
-
-package journal.models.beans.entities;
+package journal.models.entities;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -10,26 +6,30 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * @author Evgeniy Ukhanov
+ */
+
 
 @Entity
-@Table(name = "journal.currency")
-public class Currency implements Serializable {
+@Table(name = "journal.client")
+public class Client implements Serializable {
 
-    private static final long serialVersionUID = -783040864613173915L;
+	private static final long serialVersionUID = -7063663198054938091L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "currency_seq_gen")
-    @SequenceGenerator(name = "currency_seq_gen", sequenceName = "journal.currency_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "client_seq_gen")
+    @SequenceGenerator(name = "client_seq_gen", sequenceName = "journal.client_id_seq", allocationSize = 1)
     @NotNull
     @Column(name = "id")
     private long id;
 
-    @Column(name = "name")
-    @Size(max = 50)
-    private String name;
+    @Column(name = "surname")
+    @Size(max = 30)
+    private String surname;
 
 
-    public Currency() {
+    public Client() {
     }
 
 
@@ -46,20 +46,20 @@ public class Currency implements Serializable {
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
         
-        final Currency other = (Currency) obj;
+        final Client other = (Client) obj;
         return Objects.equals(this.id, other.id);
     }
 
     @Override
     public String toString() 
     {
-        return this.name;
+        return this.surname;
     }
 
 
     public long getId() {return id;}
     public void setId(long id) {this.id = id;}
 
-    public String getName() {return name;}
-    public void setName(String name) {this.name = name;}
+    public String getSurname() {return surname;}
+    public void setSurname(String surname) {this.surname = surname;}
 }

@@ -1,9 +1,4 @@
-/**
- * Created by Evgeniy Ukhanov on 02.05.2019.
- */
-
-package journal.services.graphql;
-
+package journal.controllers.graphql;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,6 +11,10 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
+
+/**
+ * @author Evgeniy Ukhanov
+ */
 
 
 @RestController

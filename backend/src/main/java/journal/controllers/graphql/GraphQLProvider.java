@@ -1,9 +1,4 @@
-/**
- * Created by Evgeniy Ukhanov on 02.05.2019.
- */
-
-package journal.services.graphql;
-
+package journal.controllers.graphql;
 
 import com.google.common.io.Resources;
 import graphql.GraphQL;
@@ -17,6 +12,10 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.net.URL;
+
+/**
+ * @author Evgeniy Ukhanov
+ */
 
 
 @Component
