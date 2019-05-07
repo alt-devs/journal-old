@@ -33,9 +33,9 @@ public class User implements Serializable {
     @OneToOne(fetch = FetchType.LAZY)
     private Role role;
 
-    @Column(name = "login")
+    @Column(name = "user_name")
     @Size(max = 50)
-    private String login;
+    private String userName;
 
     @Column(name = "password")
     @Size(max = 32)
@@ -51,6 +51,12 @@ public class User implements Serializable {
 
 
     public User() {
+    }
+
+
+    public User(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
     }
 
 
@@ -75,7 +81,7 @@ public class User implements Serializable {
     @Override
     public String toString() 
     {
-        return this.login;
+        return this.userName;
     }
 
 
@@ -85,8 +91,8 @@ public class User implements Serializable {
     public Role getRole() {return role;}
     public void setRole(Role role) {this.role = role;}
 
-    public String getLogin() {return login;}
-    public void setLogin(String login) {this.login = login;}
+    public String getUserName() {return userName;}
+    public void setUserName(String userName) {this.userName = userName;}
 
     public String getPassword() {return password;}
     public void setPassword(String password) {this.password = password;}
