@@ -32,7 +32,7 @@ module.exports = {
   /*
    ** Global CSS
    */
-  css: ['@/assets/style/app.styl'],
+  css: ['~assets/style/app.styl'],
 
   /*
    ** Plugins to load before mounting the App
@@ -46,7 +46,8 @@ module.exports = {
     '@nuxtjs/auth',
     '@nuxtjs/axios',
     '@nuxtjs/apollo',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/svg-sprite'
   ],
   auth: {
     localstorage: false,
@@ -145,7 +146,7 @@ module.exports = {
     plugins: [new VuetifyLoaderPlugin()],
     loaders: {
       stylus: {
-        import: ['~assets/style/variables.styl']
+        import: ['~assets/style/variables.styl', '~assets/style/theme.styl']
       }
     },
     /*
