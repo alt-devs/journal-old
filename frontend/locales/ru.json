@@ -22,5 +22,16 @@
     },
     "newUser": "Новый пользователь?",
     "alreadyHasAccount": "Уже есть аккаунт?"
+  },
+  "admin": {
+    "index": "Администрирование",
+    "menu": {
+      "services": "Услуги",
+      "specialists": "Специалисты",
+      "clients": "Клиенты",
+      "schedule": "Журнал",
+      "promotions": "Акции и скидки",
+      "profile": "Профиль компании"
+    }
   }
 }

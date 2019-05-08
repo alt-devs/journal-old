@@ -43,19 +43,7 @@
         v-btn(color="primary") {{ $t("auth.signup.go") }}
 </template>
 
-<script lang="ts">
-// import { Component, Vue, Emit } from 'vue-property-decorator'
-
-// @Component({
-//   layout: 'auth'
-// })
-// export default class Registration {
-//   @Emit()
-//   changeLocale() {
-//     this.$store.commit('SET_LANG', 'en')
-//   }
-// }
-
+<script>
 export default {
   layout: 'auth',
   head() {
