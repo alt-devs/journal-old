@@ -13,36 +13,35 @@ import java.util.Objects;
 
 
 @Entity
-@Table(name = "admin.role")
-public class Role implements Serializable {
+@Table(name = "journal.employee_service")
+public class Service implements Serializable {
 
-    private static final long serialVersionUID = 7651026498339611292L;
+    private static final long serialVersionUID = 4299941718815726424L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "role_seq_gen")
-    @SequenceGenerator(name = "role_seq_gen", sequenceName = "admin.role_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "employee_service_seq_gen")
+    @SequenceGenerator(name = "employee_service_seq_gen", sequenceName = "journal.employee_service_id_seq", allocationSize = 1)
     @NotNull
     @Column(name = "id")
     private long id;
 
-//    @Enumerated(EnumType.STRING)
+    @JoinColumn(name = "id_service_category", referencedColumnName = "id")
+    @OneToOne(fetch = FetchType.LAZY)
+    private ServiceCategory serviceCategory;
+
     @Column(name = "name")
-    @Size(max = 50)
+    @Size(max = 100)
     private String name;
 
-    @Column(name = "secure_name")
-    @Size(max = 50)
-    private String secureName;
 
-
-    public Role() {
+    public Service() {
     }
 
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 17 * hash + Objects.hashCode(this.id);
+        int hash = 13;
+        hash = 19 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -52,14 +51,14 @@ public class Role implements Serializable {
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
         
-        final Role other = (Role) obj;
+        final Service other = (Service) obj;
         return Objects.equals(this.id, other.id);
     }
 
     @Override
     public String toString() 
     {
-        return this.name;
+        return String.valueOf(this.id);
     }
 
 
@@ -69,6 +68,6 @@ public class Role implements Serializable {
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}
 
-    public String getSecureName() {return secureName;}
-    public void setSecureName(String secureName) {this.secureName = secureName;}
+    public ServiceCategory getServiceCategory() {return serviceCategory;}
+    public void setServiceCategory(ServiceCategory serviceCategory) {this.serviceCategory = serviceCategory;}
 }

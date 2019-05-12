@@ -6,6 +6,7 @@ package journal.models.enums;
 
 
 public enum RoleEnum {
+    ROLE_SYSTEM_OWNER,
     ROLE_OWNER,
     ROLE_SPECIALIST,
     ROLE_MANAGER,

@@ -13,14 +13,14 @@ import java.util.Objects;
 
 
 @Entity
-@Table(name = "journal.client")
-public class Client implements Serializable {
+@Table(name = "journal.employee")
+public class Employee implements Serializable {
 
-    private static final long serialVersionUID = -1157918411002892624L;
+    private static final long serialVersionUID = 7095817138481029042L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "client_seq_gen")
-    @SequenceGenerator(name = "client_seq_gen", sequenceName = "journal.client_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "employee_seq_gen")
+    @SequenceGenerator(name = "employee_seq_gen", sequenceName = "journal.employee_id_seq", allocationSize = 1)
     @NotNull
     @Column(name = "id")
     private long id;
@@ -45,26 +45,23 @@ public class Client implements Serializable {
     @Column(name = "birth_date")
     private Date birthDate;
 
-    @Column(name = "gender")
-    private int gender;
-
     @Column(name = "phone")
     @Size(max = 12)
     private String phone;
 
-    @Column(name = "email")
+    @Column(name = "position")
     @Size(max = 40)
-    private String email;
+    private String position;
 
 
-    public Client() {
+    public Employee() {
     }
 
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 27 * hash + Objects.hashCode(this.id);
+        int hash = 7;
+        hash = 31 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -74,7 +71,7 @@ public class Client implements Serializable {
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
         
-        final Client other = (Client) obj;
+        final Employee other = (Employee) obj;
         return Objects.equals(this.id, other.id);
     }
 
@@ -103,12 +100,9 @@ public class Client implements Serializable {
     public Date getBirthDate() {return birthDate;}
     public void setBirthDate(Date birthDate) {this.birthDate = birthDate;}
 
-    public int getGender() {return gender;}
-    public void setGender(int gender) {this.gender = gender;}
-
     public String getPhone() {return phone;}
     public void setPhone(String phone) {this.phone = phone;}
 
-    public String getEmail() {return email;}
-    public void setEmail(String email) {this.email = email;}
+    public String getPosition() {return position;}
+    public void setPosition(String position) {this.position = position;}
 }
