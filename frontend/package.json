@@ -31,10 +31,10 @@
   "devDependencies": {
     "@nuxt/typescript": "^2.6.3",
     "@nuxtjs/eslint-config": "^0.0.1",
-    "@vue/test-utils": "^1.0.0-beta.27",
     "@types/node": "^11.9.5",
     "@types/webpack-env": "^1.13.9",
     "@typescript-eslint/eslint-plugin": "^1.6.0",
+    "@vue/test-utils": "^1.0.0-beta.27",
     "ava": "^1.0.1",
     "babel-eslint": "^10.0.1",
     "browser-env": "^3.2.5",
@@ -60,6 +60,7 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "ts-node": "^8.1.0",
+    "ts-optchain": "^0.1.6",
     "typescript": "^3.4.4"
   }
 }

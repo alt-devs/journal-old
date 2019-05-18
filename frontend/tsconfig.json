@@ -17,6 +17,9 @@
       "~/*": ["./*"],
       "@/*": ["./*"]
     },
+    "plugins": [
+      { "transform": "ts-optchain/transform" },
+    ],
     "types": ["@types/node", "@nuxt/vue-app", "@types/webpack-env"]
   }
 }

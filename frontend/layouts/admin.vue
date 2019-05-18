@@ -57,8 +57,10 @@
 
 <script lang="ts">
 import { Component, Vue, Emit, Watch } from 'vue-property-decorator'
+import { oc } from 'ts-optchain'
 
 const ADMIN_NAMESPACE = '/admin'
+
 
 @Component
 export default class AdminLayout extends Vue {
@@ -67,15 +69,15 @@ export default class AdminLayout extends Vue {
   currentCaption = ''
 
   @Watch('$route')
-  onRouteChange() {
+  onRouteChange(): void {
     this.setCurrentPageParams()
   }
 
-  created() {
+  created(): void {
     this.setCurrentPageParams()
   }
 
-  setCurrentPageParams() {
+  setCurrentPageParams(): void {
     const currentPath = this.$router.history.current.path
 
     if (currentPath) {
@@ -125,7 +127,7 @@ export default class AdminLayout extends Vue {
   }
 
   @Emit()
-  handleMenuActionToggle() {
+  handleMenuActionToggle(): void {
     if (this.$vuetify.breakpoint.lgAndUp) {
       this.isMenuMinified = !this.isMenuMinified
       !this.isMenuShowed && (this.isMenuShowed = true)
@@ -136,7 +138,7 @@ export default class AdminLayout extends Vue {
   }
 
   @Emit()
-  handleMenuItemGo({ route }) {
+  handleMenuItemGo({ route }): void {
     this.$router.push({ path: `${ADMIN_NAMESPACE}${route}` })
   }
 }
@@ -146,68 +148,67 @@ export default class AdminLayout extends Vue {
 $raised-shadow = 3px 0px 6px 0px $gray-400
 
 .sideMenu
-  box-shadow: 3px 0px 6px 0px $gray-100
+  box-shadow 3px 0px 6px 0px $gray-100
 
 .menuList
-  margin-top: 15px
-  display: flex
-  flex-direction: column
-  height: calc(100% - 15px)
-  min-height: 300px
-  overflow: hidden
-
+  margin-top 15px
+  display flex
+  flex-direction column
+  height calc(100% - 15px)
+  min-height 300px
+  overflow hidden
 
   > :last-child
-    margin-top: auto
+    margin-top auto
 
 .companyLogo
-  height: 68px
-  width: 68px
-  margin: 14px 15px 0 5px
-  background-color: $white
-  border-radius: 12px
-  box-shadow: $raised-shadow
-  display: flex
-  align-items: center
-  justify-content: center
-  cursor: pointer
+  height 68px
+  width 68px
+  margin 14px 15px 0 5px
+  background-color $white
+  border-radius 12px
+  box-shadow $raised-shadow
+  display flex
+  align-items center
+  justify-content center
+  cursor pointer
 
   svg
-    width: 40px
+    width 40px
 
 .companyName
-  text-transform: uppercase;
-  font-size: 20px
+  text-transform uppercase
+  font-size 20px
 
 .currentPageCaption
-  font-size: 1.5em
-  margin: 0 30px
+  font-size 1.5em
+  margin 0 30px
 
 .menuIcon
-  width: 25px
-  height: 25px
+  width 25px
+  height 25px
 
 .menuText
-  text-transform: uppercase
+  text-transform uppercase
 
 .userWrapper
-  display: flex
-  align-items: center
-  height: 100%
+  display flex
+  align-items center
+  height 100%
 
   .userActionBtn
-    margin: 0
-    height: 100%
+    margin 0
+    height 100%
 
   .userAvatar
-    width: 56px
-    height: 56px
-    margin: 0 10px
-    border-radius: 100%
-    background-color: $white
-    box-shadow: $raised-shadow
-    display: flex
-    justify-content: center
-    vertical-align: center
-    color: $black
+    width 56px
+    height 56px
+    margin 0 10px
+    border-radius 100%
+    background-color $white
+    box-shadow $raised-shadow
+    display flex
+    justify-content center
+    vertical-align center
+    color $black
 </style>
