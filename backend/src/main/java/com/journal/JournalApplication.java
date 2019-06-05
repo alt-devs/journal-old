@@ -30,7 +30,7 @@ public class JournalApplication extends SpringBootServletInitializer {
 	private static Class<JournalApplication> applicationClass = JournalApplication.class;
 
 
-
+//
 //	public static void main(String[] args) {
 //		SpringApplication.run(PrejournalApplication.class, args);
 //	}
