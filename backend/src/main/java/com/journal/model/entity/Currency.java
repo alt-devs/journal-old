@@ -1,8 +1,6 @@
-/**
- * Created by Evgeniy Ukhanov on 02.05.2019.
- */
+package com.journal.model.entity;
 
-package journal.models.beans.entities;
+import io.leangen.graphql.annotations.GraphQLQuery;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -10,9 +8,13 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * @author Evgeniy Ukhanov
+ */
+
 
 @Entity
-@Table(name = "journal.currency")
+@Table(name = "currency", schema = "journal")
 public class Currency implements Serializable {
 
     private static final long serialVersionUID = -783040864613173915L;
@@ -22,10 +24,12 @@ public class Currency implements Serializable {
     @SequenceGenerator(name = "currency_seq_gen", sequenceName = "journal.currency_id_seq", allocationSize = 1)
     @NotNull
     @Column(name = "id")
+    @GraphQLQuery(name = "id")
     private long id;
 
-    @Column(name = "name")
     @Size(max = 50)
+    @Column(name = "name")
+    @GraphQLQuery(name = "name")
     private String name;
 
 
