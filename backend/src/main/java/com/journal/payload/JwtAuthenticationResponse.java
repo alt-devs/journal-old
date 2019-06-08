@@ -1,5 +1,10 @@
 package com.journal.payload;
 
+/**
+ * @author Evgeniy Ukhanov
+ */
+
+
 public class JwtAuthenticationResponse {
     private String accessToken;
     private String tokenType = "Bearer";

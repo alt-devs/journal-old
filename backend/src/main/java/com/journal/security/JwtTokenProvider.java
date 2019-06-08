@@ -9,6 +9,11 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
+/**
+ * @author Evgeniy Ukhanov
+ */
+
+
 @Component
 public class JwtTokenProvider {
 

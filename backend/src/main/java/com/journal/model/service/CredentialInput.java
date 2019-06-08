@@ -1,7 +1,12 @@
 package com.journal.model.service;
 
-
 import io.leangen.graphql.annotations.GraphQLQuery;
+
+import java.util.Objects;
+
+/**
+ * @author Evgeniy Ukhanov
+ */
 
 
 public class CredentialInput {
@@ -24,36 +29,26 @@ public class CredentialInput {
 
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        CredentialInput that = (CredentialInput) o;
-
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (username != null ? !username.equals(that.username) : that.username != null) return false;
-        if (email != null ? !email.equals(that.email) : that.email != null) return false;
-        return !(password != null ? !password.equals(that.password) : that.password != null);
-
-    }
-
-    @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (username != null ? username.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        return result;
+        int hash = 6;
+        hash = 15 * hash + Objects.hashCode(this.email);
+        return hash;
     }
 
     @Override
-    public String toString() {
-        return "CredentialInput{" +
-                "name='" + name + '\'' +
-                ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
+
+        final CredentialInput other = (CredentialInput) obj;
+        return Objects.equals(this.email, other.email);
+    }
+
+    @Override
+    public String toString()
+    {
+        return this.name;
     }
 
     public String getName() {

@@ -14,14 +14,14 @@ import java.util.Objects;
 
 
 @Entity
-@Table(name = "currency", schema = "journal")
+@Table(name = "currency", schema = "nsi")
 public class Currency implements Serializable {
 
     private static final long serialVersionUID = -783040864613173915L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "currency_seq_gen")
-    @SequenceGenerator(name = "currency_seq_gen", sequenceName = "journal.currency_id_seq", allocationSize = 1)
+    @SequenceGenerator(name = "currency_seq_gen", sequenceName = "nsi.currency_id_seq", allocationSize = 1)
     @NotNull
     @Column(name = "id")
     @GraphQLQuery(name = "id")

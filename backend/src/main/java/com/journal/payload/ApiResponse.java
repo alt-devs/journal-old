@@ -1,5 +1,10 @@
 package com.journal.payload;
 
+/**
+ * @author Evgeniy Ukhanov
+ */
+
+
 public class ApiResponse {
     private Boolean success;
     private String message;

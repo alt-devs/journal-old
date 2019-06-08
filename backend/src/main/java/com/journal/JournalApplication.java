@@ -10,6 +10,10 @@ import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 import javax.annotation.PostConstruct;
 import java.util.TimeZone;
 
+/**
+ * @author Evgeniy Ukhanov
+ */
+
 
 @SpringBootApplication
 @EntityScan(basePackageClasses = {
@@ -28,12 +32,6 @@ public class JournalApplication extends SpringBootServletInitializer {
 	}
 
 	private static Class<JournalApplication> applicationClass = JournalApplication.class;
-
-
-//
-//	public static void main(String[] args) {
-//		SpringApplication.run(PrejournalApplication.class, args);
-//	}
 
 
 	@PostConstruct

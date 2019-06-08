@@ -7,42 +7,34 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ * @author Evgeniy Ukhanov
+ */
+
 
 @Entity
-@Table(name = "users", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {
-                "username"
-        }),
-        @UniqueConstraint(columnNames = {
-                "email"
-        })
-})
+@Table(name = "user", schema = "admin")
 public class User extends DateAudit {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "users_seq_gen")
-    @SequenceGenerator(name = "users_seq_gen", sequenceName = "users_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "user_seq_gen")
+    @SequenceGenerator(name = "user_seq_gen", sequenceName = "admin.user_id_seq", allocationSize = 1)
     @NotNull
     @GraphQLQuery(name = "id")
-    private Long id;
+    private long id;
 
-//    @NotBlank
     @Size(max = 40)
     @GraphQLQuery(name = "name")
     private String name;
 
-//    @NotBlank
     @Size(max = 15)
     @GraphQLQuery(name = "username")
     private String username;
 
-//    @NaturalId
-//    @NotBlank
     @Size(max = 40)
 //    @Email
     @GraphQLQuery(name = "email")
     private String email;
 
-//    @NotBlank
     @Size(max = 100)
     @GraphQLQuery(name = "password")
     private String password;
@@ -52,13 +44,6 @@ public class User extends DateAudit {
     @GraphQLQuery(name = "role")
     private Role role;
 
-
-
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    @JoinTable(name = "user_roles",
-//            joinColumns = @JoinColumn(name = "user_id"),
-//            inverseJoinColumns = @JoinColumn(name = "role_id"))
-//    private Set<Role> roles = new HashSet<>();
 
 
     public User() {
@@ -73,8 +58,8 @@ public class User extends DateAudit {
     }
 
 
-    public Long getId() {return id;}
-    public void setId(Long id) {this.id = id;}
+    public long getId() {return id;}
+    public void setId(long id) {this.id = id;}
 
     public String getUsername() {return username;}
     public void setUsername(String username) {this.username = username;}

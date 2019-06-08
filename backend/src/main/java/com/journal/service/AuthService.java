@@ -16,6 +16,7 @@ import io.leangen.graphql.annotations.GraphQLMutation;
 import io.leangen.graphql.annotations.GraphQLQuery;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,46 +29,34 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 
+/**
+ * @author Evgeniy Ukhanov
+ */
+
 
 @Service
 public class AuthService {
 
     private static final Logger logger = LogManager.getLogger("AuthController");
 
-    private final AuthenticationManager authenticationManager;
-    private final UserRepository userRepository;
-    private final RoleRepository roleRepository;
-    private final PasswordEncoder passwordEncoder;
-    private final JwtTokenProvider tokenProvider;
-    private final LoginResponse loginResponse;
+    @Autowired
+    AuthenticationManager authenticationManager;
 
+    @Autowired
+    UserRepository userRepository;
 
-    public AuthService(AuthenticationManager authenticationManager, UserRepository userRepository,
-                       RoleRepository roleRepository, PasswordEncoder passwordEncoder,
-                       JwtTokenProvider tokenProvider, LoginResponse loginResponse) {
-        this.authenticationManager = authenticationManager;
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
-        this.passwordEncoder = passwordEncoder;
-        this.tokenProvider = tokenProvider;
-        this.loginResponse = loginResponse;
-    }
+    @Autowired
+    RoleRepository roleRepository;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
-//    @Autowired
-//    AuthenticationManager authenticationManager;
+    @Autowired
+    JwtTokenProvider tokenProvider;
 
-//    @Autowired
-//    UserRepository userRepository;
+    @Autowired
+    LoginResponse loginResponse;
 
-//    @Autowired
-//    RoleRepository roleRepository;
-
-//    @Autowired
-//    PasswordEncoder passwordEncoder;
-
-//    @Autowired
-//    JwtTokenProvider tokenProvider;
 
 //    @PostMapping("/signin")
     @GraphQLQuery(name = "signin")

@@ -5,6 +5,7 @@ import com.journal.model.entity.Currency;
 import com.journal.repository.CurrencyRepository;
 import io.leangen.graphql.annotations.GraphQLArgument;
 import io.leangen.graphql.annotations.GraphQLQuery;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,14 +19,14 @@ import java.util.Optional;
 @Service
 public class CurrencyService {
 
-//    @Autowired
-//    private CurrencyRepository currencyRepository;
+    @Autowired
+    private CurrencyRepository currencyRepository;
 
-    private final CurrencyRepository currencyRepository;
-
-    public CurrencyService(CurrencyRepository currencyRepository) {
-        this.currencyRepository = currencyRepository;
-    }
+//    private final CurrencyRepository currencyRepository;
+//
+//    public CurrencyService(CurrencyRepository currencyRepository) {
+//        this.currencyRepository = currencyRepository;
+//    }
 
 
     @GraphQLQuery(name = "currencies")

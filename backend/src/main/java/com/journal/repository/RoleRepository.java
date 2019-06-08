@@ -7,6 +7,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+/**
+ * @author Evgeniy Ukhanov
+ */
+
 
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {

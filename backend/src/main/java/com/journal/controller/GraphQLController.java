@@ -10,32 +10,24 @@ import io.leangen.graphql.GraphQLSchemaGenerator;
 import io.leangen.graphql.metadata.strategy.query.AnnotatedResolverBuilder;
 import io.leangen.graphql.metadata.strategy.value.jackson.JacksonValueMapperFactory;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
+
+/**
+ * @author Evgeniy Ukhanov
+ */
+
 
 @RestController
 public class GraphQLController {
 
     private final GraphQL graphQL;
 
-//    @RequestMapping(value="/goal", method=RequestMethod.GET)
-//    public String index() {
-//        return "goalistic";
-//    }
-
-    public GraphQLController(CurrencyService currencyService, AuthService authService) {
-        GraphQLSchema schema = new GraphQLSchemaGenerator()
-                .withResolverBuilders(
-                        //Resolve by annotations
-                        new AnnotatedResolverBuilder())
-                .withOperationsFromSingleton(currencyService, CurrencyService.class)
-                .withOperationsFromSingleton(authService, AuthService.class)
-                .withValueMapperFactory(new JacksonValueMapperFactory())
-                .generate();
-        graphQL = GraphQL.newGraphQL(schema).build();
-    }
 
     @PostMapping(value = "/graphql", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
@@ -51,4 +43,18 @@ public class GraphQLController {
                 .build());
         return executionResult.toSpecification();
     }
+
+
+    public GraphQLController(CurrencyService currencyService, AuthService authService) {
+        GraphQLSchema schema = new GraphQLSchemaGenerator()
+                .withResolverBuilders(
+                        //Resolve by annotations
+                        new AnnotatedResolverBuilder())
+                .withOperationsFromSingleton(currencyService, CurrencyService.class)
+                .withOperationsFromSingleton(authService, AuthService.class)
+                .withValueMapperFactory(new JacksonValueMapperFactory())
+                .generate();
+        graphQL = GraphQL.newGraphQL(schema).build();
+    }
+
 }

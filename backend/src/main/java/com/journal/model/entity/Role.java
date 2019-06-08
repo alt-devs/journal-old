@@ -6,19 +6,23 @@ import io.leangen.graphql.annotations.GraphQLQuery;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+/**
+ * @author Evgeniy Ukhanov
+ */
+
+
 @Entity
-@Table(name = "roles")
+@Table(name = "role", schema = "admin")
 public class Role {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "roles_seq_gen")
-    @SequenceGenerator(name = "roles_seq_gen", sequenceName = "roles_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "role_seq_gen")
+    @SequenceGenerator(name = "role_seq_gen", sequenceName = "admin.role_id_seq", allocationSize = 1)
     @NotNull
     @GraphQLQuery(name = "id")
-    private Long id;
+    private long id;
 
     @Enumerated(EnumType.STRING)
-//    @NaturalId
-    @Column(length = 30)
+    @Column(length = 50)
     @GraphQLQuery(name = "name")
     private RoleName name;
 
@@ -30,8 +34,8 @@ public class Role {
 
     public Role(RoleName name) {this.name = name;}
 
-    public Long getId() {return id;}
-    public void setId(Long id) {this.id = id;}
+    public long getId() {return id;}
+    public void setId(long id) {this.id = id;}
 
     public RoleName getName() {return name;}
     public void setName(RoleName name) {this.name = name;}

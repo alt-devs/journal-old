@@ -11,6 +11,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * @author Evgeniy Ukhanov
+ */
+
+
 public class UserPrincipal implements UserDetails {
 
     private Long id;

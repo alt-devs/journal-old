@@ -11,6 +11,10 @@ import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.time.Instant;
 
+/**
+ * @author Evgeniy Ukhanov
+ */
+
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
