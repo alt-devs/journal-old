@@ -42,7 +42,7 @@ public class User extends DateAudit {
     private String username;
 
     @Size(max = 100)
-    @Column(name = "password")
+//    @Column(name = "password")
     @GraphQLQuery(name = "password")
     private String password;
 
@@ -55,14 +55,9 @@ public class User extends DateAudit {
     @GraphQLQuery(name = "name")
     private String name;
 
-//    @Size(max = 15)
-//    @GraphQLQuery(name = "username")
-//    private String username;
-
-//    @Transient
-    @Size(max = 40)
+    @Size(max = 50)
 //    @Email
-    @Column(name = "email")
+//    @Column(name = "email")
     @GraphQLQuery(name = "email")
     private String email;
 

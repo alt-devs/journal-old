@@ -1,6 +1,5 @@
 package com.journal.model.entity;
 
-import com.journal.model.enums.RoleName;
 import io.leangen.graphql.annotations.GraphQLQuery;
 
 import javax.persistence.*;
@@ -28,7 +27,8 @@ public class Role {
 
     @Column(name = "secure_name", length = 50)
     @GraphQLQuery(name = "secureName")
-    private RoleName secureName;
+//    private RoleName secureName;
+    private String secureName;
 
 
     public Role() {
@@ -36,11 +36,14 @@ public class Role {
     }
 
 
-    public Role(RoleName name) {this.secureName = secureName;}
+    //public Role(RoleName name) {this.secureName = secureName;}
 
     public long getId() {return id;}
     public void setId(long id) {this.id = id;}
 
-    public RoleName getSecureName() {return secureName;}
-    public void setSecureName(RoleName secureName) {this.secureName = secureName;}
+    public String getSecureName() {return secureName;}
+    public void setSecureName(String secureName) {this.secureName = secureName;}
+
+    public String getName() {return name;}
+    public void setName(String name) {this.name = name;}
 }
