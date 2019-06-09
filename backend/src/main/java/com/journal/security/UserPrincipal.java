@@ -19,11 +19,11 @@ import java.util.Objects;
 public class UserPrincipal implements UserDetails {
 
     private Long id;
-    private String name;
+//    private String name;
     private String username;
 
-    @JsonIgnore
-    private String email;
+//    @JsonIgnore
+//    private String email;
 
     @JsonIgnore
     private String password;
@@ -32,16 +32,16 @@ public class UserPrincipal implements UserDetails {
 
     public UserPrincipal(Long id, String name, String username, String email, String password, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
-        this.name = name;
+//        this.name = name;
         this.username = username;
-        this.email = email;
+//        this.email = email;
         this.password = password;
         this.authorities = authorities;
     }
 
     public static UserPrincipal create(User user) {
         List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(user.getRole().getName().name()));
+        authorities.add(new SimpleGrantedAuthority(user.getRole().getSecureName().name()));
 
 //        List<GrantedAuthority> authorities = user.getRoles().stream().map(role ->
 //                        new SimpleGrantedAuthority(role.getName().name())
@@ -58,8 +58,8 @@ public class UserPrincipal implements UserDetails {
     }
 
     public Long getId() {return id;}
-    public String getName() {return name;}
-    public String getEmail() {return email;}
+//    public String getName() {return name;}
+//    public String getEmail() {return email;}
 
     @Override
     public String getUsername() {return username;}

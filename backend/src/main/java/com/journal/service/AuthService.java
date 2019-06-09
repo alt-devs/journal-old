@@ -66,7 +66,7 @@ public class AuthService {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        credentialInput.getEmail(),
+                        credentialInput.getUsername(),
                         credentialInput.getPassword()
 
 //                        loginRequest.getUsernameOrEmail(),
@@ -102,14 +102,17 @@ public class AuthService {
                     HttpStatus.BAD_REQUEST);
         }
 
-        if(userRepository.existsByEmail(credentialInput.getEmail())) {
-            return new ResponseEntity(new ApiResponse(false, "Пользователь с указанным email уже присутствует в системе!"),
-                    HttpStatus.BAD_REQUEST);
-        }
+//        if(userRepository.existsByEmail(credentialInput.getEmail())) {
+//            return new ResponseEntity(new ApiResponse(false, "Пользователь с указанным email уже присутствует в системе!"),
+//                    HttpStatus.BAD_REQUEST);
+//        }
 
         // Creating user's account
-        User user = new User(credentialInput.getName(), credentialInput.getUsername(),
-                             credentialInput.getEmail(), credentialInput.getPassword());
+        User user = new User(credentialInput.getUsername(),
+                             credentialInput.getPassword());
+
+//        User user = new User(credentialInput.getName(), credentialInput.getUsername(),
+//                credentialInput.getEmail(), credentialInput.getPassword());
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 

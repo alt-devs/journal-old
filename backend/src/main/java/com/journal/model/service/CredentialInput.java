@@ -11,14 +11,14 @@ import java.util.Objects;
 
 public class CredentialInput {
 
-    @GraphQLQuery(name = "name")
-    private String name;
+//    @GraphQLQuery(name = "name")
+//    private String name;
 
     @GraphQLQuery(name = "username")
     private String username;
 
-    @GraphQLQuery(name = "email")
-    private String email;
+//    @GraphQLQuery(name = "email")
+//    private String email;
 
     @GraphQLQuery(name = "password")
     private String password;
@@ -31,7 +31,7 @@ public class CredentialInput {
     @Override
     public int hashCode() {
         int hash = 6;
-        hash = 15 * hash + Objects.hashCode(this.email);
+        hash = 15 * hash + Objects.hashCode(this.username);
         return hash;
     }
 
@@ -42,22 +42,21 @@ public class CredentialInput {
         if (getClass() != obj.getClass()) return false;
 
         final CredentialInput other = (CredentialInput) obj;
-        return Objects.equals(this.email, other.email);
+        return Objects.equals(this.username, other.username);
     }
 
     @Override
     public String toString()
     {
-        return this.name;
+        return this.username;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+//    public String getName() {
+//        return name;
+//    }
+//    public void setName(String name) {
+//        this.name = name;
+//    }
 
     public String getUsername() {
         return username;
@@ -67,13 +66,13 @@ public class CredentialInput {
         this.username = username;
     }
 
-    public String getEmail() {
-        return email;
-    }
+//    public String getEmail() {
+//        return email;
+//    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
 
     public String getPassword() {
         return password;

@@ -18,13 +18,17 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "role_seq_gen")
     @SequenceGenerator(name = "role_seq_gen", sequenceName = "admin.role_id_seq", allocationSize = 1)
     @NotNull
+    @Column(name = "id")
     @GraphQLQuery(name = "id")
     private long id;
 
-    @Enumerated(EnumType.STRING)
-    @Column(length = 50)
+    @Column(name = "name", length = 50)
     @GraphQLQuery(name = "name")
-    private RoleName name;
+    private String name;
+
+    @Column(name = "secure_name", length = 50)
+    @GraphQLQuery(name = "secureName")
+    private RoleName secureName;
 
 
     public Role() {
@@ -32,11 +36,11 @@ public class Role {
     }
 
 
-    public Role(RoleName name) {this.name = name;}
+    public Role(RoleName name) {this.secureName = secureName;}
 
     public long getId() {return id;}
     public void setId(long id) {this.id = id;}
 
-    public RoleName getName() {return name;}
-    public void setName(RoleName name) {this.name = name;}
+    public RoleName getSecureName() {return secureName;}
+    public void setSecureName(RoleName secureName) {this.secureName = secureName;}
 }

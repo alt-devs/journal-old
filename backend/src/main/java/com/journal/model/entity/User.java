@@ -2,10 +2,13 @@ package com.journal.model.entity;
 
 import com.journal.audit.DateAudit;
 import io.leangen.graphql.annotations.GraphQLQuery;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.Instant;
 
 /**
  * @author Evgeniy Ukhanov
@@ -22,27 +25,48 @@ public class User extends DateAudit {
     @GraphQLQuery(name = "id")
     private long id;
 
+//    @JoinColumn(name = "id_employee", referencedColumnName = "id")
+//    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH} )
+//    @GraphQLQuery(name = "role")
+//    private Employee employee;
+
+    @JoinColumn(name = "id_role", referencedColumnName = "id")
+    @Fetch(FetchMode.JOIN)
+    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH} )
+    @GraphQLQuery(name = "role")
+    private Role role;
+
+    @Size(max = 50)
+    @Column(name = "login")
+    @GraphQLQuery(name = "login")
+    private String username;
+
+    @Size(max = 100)
+    @Column(name = "password")
+    @GraphQLQuery(name = "password")
+    private String password;
+
+    @NotNull
+    @Column(name = "last_active")
+    private Instant lastActive;
+
+    @Transient
     @Size(max = 40)
     @GraphQLQuery(name = "name")
     private String name;
 
-    @Size(max = 15)
-    @GraphQLQuery(name = "username")
-    private String username;
+//    @Size(max = 15)
+//    @GraphQLQuery(name = "username")
+//    private String username;
 
+//    @Transient
     @Size(max = 40)
 //    @Email
+    @Column(name = "email")
     @GraphQLQuery(name = "email")
     private String email;
 
-    @Size(max = 100)
-    @GraphQLQuery(name = "password")
-    private String password;
 
-    @JoinColumn(name = "id_role", referencedColumnName = "id")
-    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH} )
-    @GraphQLQuery(name = "role")
-    private Role role;
 
 
 
@@ -54,6 +78,14 @@ public class User extends DateAudit {
         this.name = name;
         this.username = username;
         this.email = email;
+        this.password = password;
+    }
+
+
+    public User(String username, String password) {
+//        this.name = name;
+        this.username = username;
+//        this.email = email;
         this.password = password;
     }
 
@@ -73,9 +105,9 @@ public class User extends DateAudit {
     public String getPassword() {return password;}
     public void setPassword(String password) {this.password = password;}
 
-//    public Set<Role> getRoles() {return roles;}
-//    public void setRoles(Set<Role> roles) {this.roles = roles;}
-
     public Role getRole() {return role;}
     public void setRole(Role role) {this.role = role;}
+
+    public Instant getLastActive() {return lastActive;}
+    public void setLastActive(Instant lastActive) {this.lastActive = lastActive;}
 }
