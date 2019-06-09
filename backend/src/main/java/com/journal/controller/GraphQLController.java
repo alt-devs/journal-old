@@ -33,7 +33,6 @@ public class GraphQLController {
     @ResponseBody
 //    public Map<String, Object> graphql(@RequestBody Map<String, String> request, HttpServletRequest raw) {
     public Map<String, Object> graphql(@RequestBody Map<String, Object> request, HttpServletRequest raw) {
-        System.out.println("ПРИВЕТ");
         ExecutionResult executionResult = graphQL.execute(ExecutionInput.newExecutionInput()
                 .query(request.get("query").toString())
 //                .query(request.get("query"))

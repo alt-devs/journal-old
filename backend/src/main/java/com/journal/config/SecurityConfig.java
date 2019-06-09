@@ -95,4 +95,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public HttpSessionEventPublisher httpSessionEventPublisher() {
         return new HttpSessionEventPublisher();
     }
+
+//    @EnableRedisHttpSession(maxInactiveIntervalInSeconds = 180)
+//    public class HttpSessionConfig {
+//
+//        @Bean
+//        public HttpSessionStrategy httpSessionStrategy() {
+//            return new HeaderHttpSessionStrategy();
+//        }
+//    }
 }

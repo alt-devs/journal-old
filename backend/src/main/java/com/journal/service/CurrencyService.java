@@ -6,6 +6,7 @@ import com.journal.repository.CurrencyRepository;
 import io.leangen.graphql.annotations.GraphQLArgument;
 import io.leangen.graphql.annotations.GraphQLQuery;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class CurrencyService {
 
     @GraphQLQuery(name = "currencies")
 //    @PreAuthorize("isAnonymous() OR hasRole('USER')")
-//    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('USER') OR hasRole('ADMIN')")
     public List<Currency> getCurrencies() {
         return currencyRepository.findAll();
     }

@@ -46,7 +46,6 @@ public class User extends DateAudit {
     @GraphQLQuery(name = "password")
     private String password;
 
-    @NotNull
     @Column(name = "last_active")
     private Instant lastActive;
 
@@ -62,9 +61,6 @@ public class User extends DateAudit {
     private String email;
 
 
-
-
-
     public User() {
     }
 
@@ -78,9 +74,7 @@ public class User extends DateAudit {
 
 
     public User(String username, String password) {
-//        this.name = name;
         this.username = username;
-//        this.email = email;
         this.password = password;
     }
 
