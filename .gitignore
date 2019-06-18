@@ -2,6 +2,7 @@
 /backend/journal/.idea
 /backend/journal/target
 /backend/target
+/backend/*.iml
 
 .idea
 /backend/classes

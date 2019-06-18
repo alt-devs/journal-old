@@ -1,0 +1,69 @@
+<project name="Project-build" default="deploy" basedir=".">
+    <description>
+        Builds and deploys .war files to local server
+    </description>
+
+    <!-- ################################################## PROPERTIES ########################################################## -->
+    <dirname file="${ant.file.Project-build}" property="project.dir" />
+    <property name="app.name" value="Journal" />
+    <property name="maven.app.name" value="journal" />
+    <property name="dir.build" value="../.build" />
+
+    <property name="maven.project.path" value="${project.dir}" />
+    <property name="war.file.name" value="journal.war" />
+    <property name="war.file.path" location="${dir.build}/${war.file.name}" />
+
+    <xmlproperty file="pom.xml" prefix="pom" />
+    <property environment="env" />
+    <property file="${project.dir}/build.${env.COMPUTERNAME}.properties" />
+
+
+    <!-- ################################################## MAVEN ########################################################## -->
+    <!-- http://maven.apache.org/ant-tasks/examples/mvn.html -->
+    <macrodef name="maven">
+        <attribute name="options" default="" />
+        <attribute name="goal" />
+        <attribute name="basedir" />
+        <attribute name="resultproperty" default="maven.result" />
+        <element name="args" implicit="true" optional="true" />
+        <sequential>
+            <java classname="org.codehaus.classworlds.Launcher" fork="true" dir="@{basedir}" resultproperty="@{resultproperty}">
+                <jvmarg value="-Xmx512m" />
+                <jvmarg value="-Dmaven.multiModuleProjectDirectory" />
+                <classpath>
+                    <fileset dir="${maven.home}/boot">
+                        <include name="*.jar" />
+                    </fileset>
+                    <fileset dir="${maven.home}/lib">
+                        <include name="*.jar" />
+                    </fileset>
+                </classpath>
+                <sysproperty key="classworlds.conf" value="${maven.home}/bin/m2.conf" />
+                <sysproperty key="maven.home" value="${maven.home}" />
+                <arg line="--batch-mode @{options} @{goal}" />
+            </java>
+        </sequential>
+    </macrodef>
+
+    <!-- ################################################## TARGETS ########################################################## -->
+
+    <!-- Maven clean and install -->
+    <target name="maven-clean-install">
+        <echo message="[LOCAL] Generating war files" />
+        <echo message="[LOCAL] mvn clean" />
+        <maven basedir="${maven.project.path}" options="" goal="clean" resultproperty="maven.build.result" />
+
+        <echo message="[LOCAL] mvn install" />
+        <maven basedir="${maven.project.path}" options="" goal="install" resultproperty="maven.build.result" />
+    </target>
+
+    <!-- Deploy -->
+    <target name="deploy" depends="maven-clean-install">
+        <copy file="${project.dir}/target/${maven.app.name}-${pom.project.version}.war"
+              tofile="${dir.deployment}/${app.name}.war"/>
+    </target>
+
+    <!--<target name="test">-->
+        <!--<echo message="${env.COMPUTERNAME}"/>-->
+    <!--</target>-->
+</project>
