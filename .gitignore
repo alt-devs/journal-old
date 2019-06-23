@@ -6,3 +6,7 @@
 
 .idea
 /backend/classes
+
+.vscode
+
+.DS_Store
